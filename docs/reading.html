@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FORGE — Reading List</title>
+<style>
+  :root {
+    --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #e6edf3;
+    --muted: #8b949e; --accent: #58a6ff; --green: #3fb950; --orange: #d29922; --red: #f85149;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 16px; max-width: 800px; margin: 0 auto; }
+  h1 { font-size: 1.6em; margin-bottom: 4px; }
+  h2 { font-size: 1.2em; margin: 24px 0 12px; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  .subtitle { color: var(--muted); font-size: 0.9em; margin-bottom: 20px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin: 12px 0; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .nav { margin-bottom: 20px; font-size: 0.9em; }
+  .nav a { margin-right: 16px; }
+  .read-item { padding: 12px 0; border-bottom: 1px solid var(--border); }
+  .read-item:last-child { border-bottom: none; }
+  .read-item h3 { font-size: 1em; margin-bottom: 4px; }
+  .read-item p { color: var(--muted); font-size: 0.85em; margin: 0; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.7em; font-weight: 600; margin-left: 8px; }
+  .tag-essential { background: #1a3a1a; color: var(--green); }
+  .tag-deep { background: #1a1a3a; color: var(--accent); }
+  .tag-inspiration { background: #3a2a0a; color: var(--orange); }
+  .tag-technical { background: #2a1a2a; color: #d2a8ff; }
+  @media (max-width: 600px) { body { padding: 12px; } h1 { font-size: 1.4em; } }
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <a href="index.html">Briefing</a>
+  <a href="todo.html">To-Do</a>
+  <a href="reading.html"><strong>Reading List</strong></a>
+  <a href="plan.html">Business Plan</a>
+</div>
+
+<h1>FORGE — Reading List</h1>
+<p class="subtitle">Prioritized. Start from the top.</p>
+
+<h2>Read First: Understand the Battlefield</h2>
+<div class="card">
+
+<div class="read-item">
+<h3><a href="https://www.csis.org/analysis/lessons-ukraine-conflict-modern-warfare-age-autonomy-information-and-resilience">Lessons from the Ukraine Conflict</a> <span class="tag tag-essential">Essential</span></h3>
+<p>CSIS. The definitive overview of how drones changed modern war. Sets the context for everything we're building.</p>
+</div>
+
+<div class="read-item">
+<h3><a href="https://mwi.westpoint.edu/beyond-fpvs-learning-the-lessons-of-the-ukraine-war-all-of-them/">Beyond FPVs: Learning the Lessons of the Ukraine War</a> <span class="tag tag-essential">Essential</span></h3>
+<p>West Point Modern War Institute. Goes beyond drone hype to structural lessons.</p>
+</div>
+
+<div class="read-item">
+<h3><a href="https://www.twz.com/air/ukraines-acoustic-drone-detection-network-eyed-by-u-s-as-low-cost-air-defense-option">Ukraine's Acoustic Drone Detection Network</a> <span class="tag tag-essential">Essential</span></h3>
+<p>The War Zone. The US is looking at Ukraine's acoustic sensor network. This is the model we're replicating.</p>
+</div>
+
+<div class="read-item">
+<h3><a href="https://united24media.com/war-in-ukraine/sky-fortress-ukraines-acoustic-detection-system-that-tracks-drones-cheap-and-fast-9451">Sky Fortress: Ukraine's $500 Acoustic Detection System</a> <span class="tag tag-essential">Essential</span></h3>
+<p>United24. How ZVOOK works — parabolic mirror + phone + AI = drone detection at $500/unit. Our direct inspiration.</p>
+</div>
+
+<div class="read-item">
+<h3><a href="https://www.csis.org/analysis/united-states-needs-southwest-drone-wall">The United States Needs a Southwest Drone Wall</a> <span class="tag tag-essential">Essential</span></h3>
+<p>CSIS. Makes the case for persistent drone detection along the US-Mexico border. Our domestic market thesis.</p>
+</div>
+
+</div>
+
+<h2>Understand the Market</h2>
+<div class="card">
+
+<div class="read-item">
+<h3><a href="https://www.cofactr.com/articles/the-pentagon-wants-defense-hardware-startups-are-you-ready">The Pentagon Wants Defense Hardware Startups</a> <span class="tag tag-deep">Deep Dive</span></h3>
+<p>Cofactr. Practical overview of what DoD is looking for from small hardware companies.</p>
+</div>
+
+<div class="read-item">
+<h3><a href="https://www.bvp.com/atlas/defense-tech-roadmap-five-frontiers-for-2026">Defense Tech Roadmap: Five Frontiers for 2026</a> <span class="tag tag-deep">Deep Dive</span></h3>
+<p>Bessemer Venture Partners. Where the smart money thinks defense tech is going.</p>
+</div>
+
+<div class="read-item">
+<h3><a href="https://www.diu.mil/work-with-us">DIU: Work With Us</a> <span class="tag tag-essential">Essential</span></h3>
+<p>The actual portal where we'll submit. Read every open CSO. Understand the format.</p>
+</div>
+
+<div class="read-item">
+<h3><a href="https://defensescoop.com/2026/01/21/army-counter-drone-small-uas-acoustic-detection-systems/">Army Seeks Acoustic Detection for Small UAS</a> <span class="tag tag-essential">Essential</span></h3>
+<p>DefenseScoop. The Army C5ISR RFI from January 2026. This is literally a description of our product.</p>
+</div>
+
+<div class="read-item">
+<h3><a href="https://dronelife.com/2026/02/13/diu-launches-new-counter-drone-sensing-initiative-for-homeland-and-mobile-defense/">DIU Launches Counter-Drone Sensing Initiative</a> <span class="tag tag-essential">Essential</span></h3>
+<p>Feb 2026. The active solicitation we're targeting.</p>
+</div>
+
+<div class="read-item">
+<h3><a href="https://www.droneshield.com/counterdrone-market">Counter-Drone Market Guide</a> <span class="tag tag-deep">Deep Dive</span></h3>
+<p>DroneShield's overview. Useful competitive intelligence from an incumbent.</p>
+</div>
+
+</div>
+
+<h2>Understand the Border Threat</h2>
+<div class="card">
+
+<div class="read-item">
+<h3><a href="https://www.brookings.edu/articles/how-mexican-cartels-are-using-drones-now-and-in-the-future/">How Mexican Cartels Are Using Drones</a> <span class="tag tag-deep">Deep Dive</span></h3>
+<p>Brookings. Comprehensive overview of cartel drone operations.</p>
+</div>
+
+<div class="read-item">
+<h3><a href="https://www.axios.com/2025/08/13/drones-us-mexico-border-sheriffs-police-cartels">Cops, Cartels and the New Drone Wars</a> <span class="tag tag-deep">Deep Dive</span></h3>
+<p>Axios. How border law enforcement is dealing with cartel drones.</p>
+</div>
+
+<div class="read-item">
+<h3><a href="https://www.atlanticcouncil.org/blogs/new-atlanticist/drug-cartels-are-adopting-cutting-edge-drone-technology-heres-how-the-us-must-adapt/">Cartels Adopting Cutting-Edge Drone Technology</a> <span class="tag tag-deep">Deep Dive</span></h3>
+<p>Atlantic Council. Policy perspective on what the US needs to do.</p>
+</div>
+
+</div>
+
+<h2>Technical: How to Build It</h2>
+<div class="card">
+
+<div class="read-item">
+<h3><a href="https://www.mindfoundry.ai/blog/acoustic-intelligence-for-counter-uas">AI-Enabled Acoustic Intelligence for Counter-UAS</a> <span class="tag tag-technical">Technical</span></h3>
+<p>Mind Foundry. How ML is applied to acoustic drone detection.</p>
+</div>
+
+<div class="read-item">
+<h3><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8348319/">Audio-Based Drone Detection with Deep Learning + GANs</a> <span class="tag tag-technical">Technical</span></h3>
+<p>Academic paper. GAN-augmented training data for drone audio classification.</p>
+</div>
+
+<div class="read-item">
+<h3><a href="https://arxiv.org/abs/2509.04715">Multiclass Acoustic Dataset for 32 UAV Classes</a> <span class="tag tag-technical">Technical</span></h3>
+<p>2025 paper with interactive tool. Understand what drone audio signatures look like across types.</p>
+</div>
+
+<div class="read-item">
+<h3><a href="https://www.sqhead.com/drone-detection">Squarehead — How Acoustic Drone Detection Works</a> <span class="tag tag-technical">Technical</span></h3>
+<p>The market leader's explanation of their approach. 128 MEMS mics, ML classification.</p>
+</div>
+
+<div class="read-item">
+<h3><a href="https://github.com/kbhujbal/SudarshanChakra-acoustic_uav_threat_detection_CNN">Acoustic UAV Threat Detection CNN (GitHub)</a> <span class="tag tag-technical">Technical</span></h3>
+<p>Production-grade code you can run today. Audio -> mel spectrogram -> CNN classification.</p>
+</div>
+
+</div>
+
+<h2>Procurement: How to Sell to DoD</h2>
+<div class="card">
+
+<div class="read-item">
+<h3><a href="https://nstxl.org">NSTXL — OTA Consortium</a> <span class="tag tag-essential">Essential</span></h3>
+<p>The consortium we'll join. Browse their portal. See what solicitations look like.</p>
+</div>
+
+<div class="read-item">
+<h3><a href="https://team-80.com/blog/the-ultimate-guide-for-sbir/">2026 SBIR Ultimate Guide</a> <span class="tag tag-deep">Deep Dive</span></h3>
+<p>Everything about SBIR, even though it's paused. Will be relevant when reauthorized.</p>
+</div>
+
+<div class="read-item">
+<h3><a href="https://www.dhs.gov/news/2026/01/12/department-homeland-security-launches-new-office-advance-drone-and-counter-drone">DHS Launches Counter-Drone Office</a> <span class="tag tag-deep">Deep Dive</span></h3>
+<p>January 2026. $115M investment. This is a customer.</p>
+</div>
+
+<div class="read-item">
+<h3><a href="https://www.fema.gov/grants/preparedness/counter-unmanned-aircraft-systems-grant-program">FEMA C-UAS Grant Program</a> <span class="tag tag-essential">Essential</span></h3>
+<p>$500M for state/local detection. These are our first buyers.</p>
+</div>
+
+</div>
+
+<h2>Inspiration</h2>
+<div class="card">
+
+<div class="read-item">
+<h3>Freedom's Forge — Arthur Herman <span class="tag tag-inspiration">Inspiration</span></h3>
+<p>You have this. Kaiser's insight: break it into producible modules using existing components. Ship fast. Iterate. That's our approach with COTS hardware + software + compliance.</p>
+</div>
+
+<div class="read-item">
+<h3><a href="https://www.realcleardefense.com/articles/2023/03/03/defense_innovation_and_venture_capital_skydio_a_case_study_885036.html">Skydio: A Defense Innovation Case Study</a> <span class="tag tag-inspiration">Inspiration</span></h3>
+<p>How a consumer drone company pivoted to defense and won an Army Program of Record via DIU.</p>
+</div>
+
+<div class="read-item">
+<h3><a href="https://foreignaffairs.com/middle-east/autonomous-battlefield">The Autonomous Battlefield</a> <span class="tag tag-inspiration">Inspiration</span></h3>
+<p>Foreign Affairs. The big picture on where warfare is heading and why this matters.</p>
+</div>
+
+<div class="read-item">
+<h3><a href="https://www.ifri.org/en/studies/mapping-miltech-war-eight-lessons-ukraines-battlefield">Mapping the MilTech War: Eight Lessons</a> <span class="tag tag-inspiration">Inspiration</span></h3>
+<p>Ifri. How technology innovation is actually working on the battlefield.</p>
+</div>
+
+</div>
+
+<hr>
+<p style="color:var(--muted); font-size:0.8em; text-align:center;">FORGE — Updated March 17, 2026</p>
+</body>
+</html>
