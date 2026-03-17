@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FORGE — Counter-Drone Detection</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --orange: #d29922;
+    --red: #f85149;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 16px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  h1 { font-size: 1.8em; margin-bottom: 4px; }
+  h2 { font-size: 1.3em; margin: 24px 0 12px; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  h3 { font-size: 1.1em; margin: 16px 0 8px; color: var(--green); }
+  p, li { margin-bottom: 8px; font-size: 0.95em; }
+  ul, ol { padding-left: 20px; }
+  .subtitle { color: var(--muted); font-size: 0.9em; margin-bottom: 20px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    margin: 12px 0;
+  }
+  .stat { display: inline-block; margin: 4px 8px 4px 0; padding: 4px 10px; background: var(--border); border-radius: 4px; font-size: 0.85em; }
+  .stat-green { background: #1a3a1a; color: var(--green); }
+  .stat-orange { background: #3a2a0a; color: var(--orange); }
+  .stat-red { background: #3a1a1a; color: var(--red); }
+  .stat-blue { background: #0a1a3a; color: var(--accent); }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 0.85em; }
+  th, td { padding: 8px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { color: var(--muted); font-weight: 600; }
+  details { margin: 8px 0; }
+  summary {
+    cursor: pointer;
+    padding: 12px 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1em;
+    list-style: none;
+  }
+  summary::before { content: '+ '; color: var(--accent); }
+  details[open] summary::before { content: '- '; }
+  details[open] summary { border-radius: 8px 8px 0 0; }
+  .detail-content {
+    padding: 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .highlight {
+    background: linear-gradient(135deg, #1a2a3a, #0a1a2a);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px 0;
+  }
+  .checklist { list-style: none; padding-left: 0; }
+  .checklist li { padding: 4px 0; }
+  .checklist li::before { content: '[ ] '; color: var(--muted); font-family: monospace; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.75em; font-weight: 600; }
+  .tag-now { background: #1a3a1a; color: var(--green); }
+  .tag-soon { background: #3a2a0a; color: var(--orange); }
+  .tag-later { background: #1a1a3a; color: var(--accent); }
+  hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+  @media (max-width: 600px) {
+    body { padding: 12px; }
+    h1 { font-size: 1.5em; }
+    table { font-size: 0.8em; }
+    th, td { padding: 6px 4px; }
+  }
+</style>
+</head>
+<body>
+
+<h1>FORGE Sentinel</h1>
+<p class="subtitle">Acoustic Counter-Drone Detection for American Defense<br>Research compiled March 17, 2026</p>
+
+<div class="highlight">
+<strong>The thesis:</strong> RF-based drone detection is going blind as fiber-optic and autonomous drones proliferate. Ukraine proved cheap acoustic sensors work at scale ($500/unit, 14,000+ deployed, 95% interception support). No Western company sells this. We build a $2,300 node, sell for $12K, deploy in mesh networks. SAFER SKIES Act just created thousands of new buyers. DHS has $1.5B in contracts. DIU is actively soliciting counter-drone sensing <em>right now</em>.
+</div>
+
+<h2>The Product</h2>
+<div class="card">
+<p>A ruggedized, offline, edge-AI-powered acoustic drone detection node designed for networked mesh deployment.</p>
+<ul>
+<li>Detects drones by sound using MEMS microphone array + on-device ML</li>
+<li>Works against <strong>fiber-optic and autonomous drones</strong> invisible to RF</li>
+<li>Classifies drone type and estimates bearing</li>
+<li>Operates fully offline &mdash; no cloud, no network required</li>
+<li>Tamper-evident audit trail on all detections</li>
+<li>Networks with other nodes for triangulation</li>
+<li>Outputs Cursor-on-Target (CoT) for TAK/C2 integration</li>
+</ul>
+</div>
+
+<h3>Why It Wins</h3>
+<div class="card">
+<span class="stat stat-green">Fiber-optic drone gap</span>
+<span class="stat stat-green">$2,300 BOM</span>
+<span class="stat stat-green">Detection-only = no ITAR</span>
+<span class="stat stat-green">Under $15K = purchase card</span>
+<span class="stat stat-green">Network effects</span>
+<span class="stat stat-green">Dual-use day one</span>
+</div>
+
+<h2>Market</h2>
+<table>
+<tr><th>Segment</th><th>2025</th><th>2030</th><th>CAGR</th></tr>
+<tr><td>Drone detection</td><td>$858M</td><td>$2.8B</td><td>28.9%</td></tr>
+<tr><td>Counter-UAS total</td><td>$3.1-6.6B</td><td>$20.3B</td><td>25.1%</td></tr>
+</table>
+
+<h3>Immediate Money on the Table</h3>
+<div class="card">
+<table>
+<tr><td><span class="stat stat-green">$500M</span></td><td>FEMA C-UAS grants for state/local detection</td></tr>
+<tr><td><span class="stat stat-green">$1.5B</span></td><td>DHS C-UAS IDIQ &mdash; mandatory across CBP/ICE/USCG/SS</td></tr>
+<tr><td><span class="stat stat-blue">Active</span></td><td>DIU Counter-Drone Sensing CSO (Feb 2026)</td></tr>
+<tr><td><span class="stat stat-blue">Active</span></td><td>Army C5ISR Acoustic Detection RFI</td></tr>
+<tr><td><span class="stat stat-orange">$350K</span></td><td>xTechCounter Strike prizes + G-TEAD access</td></tr>
+<tr><td><span class="stat stat-orange">$2.5B</span></td><td>Correctional facility market (9,000 facilities)</td></tr>
+<tr><td><span class="stat stat-orange">$3.6B</span></td><td>Commercial venue market (7,000+ venues)</td></tr>
+</table>
+</div>
+
+<h2>Competitive Landscape</h2>
+<table>
+<tr><th>Company</th><th>Approach</th><th>Price</th><th>Gap</th></tr>
+<tr><td>Anduril</td><td>Full-spectrum C-UAS</td><td>$20B contract level</td><td>Not selling small</td></tr>
+<tr><td>Dedrone (Axon)</td><td>RF primary</td><td>$11.5K-$250K+</td><td>Blind to fiber-optic</td></tr>
+<tr><td>DroneShield</td><td>RF + EW</td><td>$30K-100K+</td><td>Acoustic secondary</td></tr>
+<tr><td>Squarehead</td><td>Acoustic (128 mics)</td><td>$50K-200K</td><td>Expensive, no mesh</td></tr>
+<tr><td>ZVOOK (Ukraine)</td><td>Acoustic mesh</td><td>$500/node</td><td>Not sold in West</td></tr>
+<tr><td><strong>FORGE</strong></td><td><strong>Acoustic mesh + AI</strong></td><td><strong>$12K/node</strong></td><td><strong>The gap</strong></td></tr>
+</table>
+
+<hr>
+
+<!-- DETAILED SECTIONS -->
+
+<details>
+<summary>Technical Architecture &amp; BOM ($2,330/node)</summary>
+<div class="detail-content">
+<h3>Hardware</h3>
+<table>
+<tr><th>Component</th><th>Part</th><th>Price</th></tr>
+<tr><td>Compute</td><td>NVIDIA Jetson Orin Nano Super (67 TOPS)</td><td>$249</td></tr>
+<tr><td>Mic Array</td><td>miniDSP UMA-16 v2 (16-ch MEMS)</td><td>$275</td></tr>
+<tr><td>SDR (wideband)</td><td>HackRF Pro (100kHz-6GHz)</td><td>$400</td></tr>
+<tr><td>SDR (900MHz)</td><td>RTL-SDR V4</td><td>$30</td></tr>
+<tr><td>Thermal</td><td>FLIR Lepton 3.5 + PureThermal 3</td><td>$250</td></tr>
+<tr><td>Visible</td><td>Arducam IMX477 Day/Night</td><td>$70</td></tr>
+<tr><td>Enclosure</td><td>Pelican 1450 (IP67, MIL-STD-810)</td><td>$196</td></tr>
+<tr><td>Connectors</td><td>IP68 cable glands, SMA passthroughs</td><td>$50</td></tr>
+<tr><td>Antennas</td><td>Wideband discone + directional</td><td>$80</td></tr>
+<tr><td>Power</td><td>EcoFlow RIVER 2 Pro (768Wh)</td><td>$350</td></tr>
+<tr><td>Solar</td><td>100W folding panel</td><td>$150</td></tr>
+<tr><td>Networking</td><td>USB LTE modem</td><td>$80</td></tr>
+<tr><td>Storage</td><td>512GB NVMe SSD</td><td>$50</td></tr>
+<tr><td>Misc</td><td>Cables, hub, heatsinks, fans</td><td>$100</td></tr>
+<tr><th>Total</th><th></th><th>$2,330</th></tr>
+</table>
+
+<h3>ML Pipeline</h3>
+<ul>
+<li><strong>Stage 1 (always-on, &lt;100mW):</strong> Harmonic product spectrum trigger on MCU. Detects propeller harmonics in 100-2000 Hz.</li>
+<li><strong>Stage 2 (on-demand, 7-15W):</strong> MobileNetV2 on 64-bin mel spectrogram, INT8 quantized, &lt;20ms inference on Jetson.</li>
+<li><strong>DOA:</strong> GCC-PHAT for real-time bearing estimation from 16-mic array.</li>
+<li><strong>Visual:</strong> YOLOv8-nano for drone detection/tracking (~43 FPS).</li>
+</ul>
+
+<h3>Expected Performance</h3>
+<table>
+<tr><th>Metric</th><th>Small FPV</th><th>Mavic/Phantom</th></tr>
+<tr><td>Detection range</td><td>150-300m</td><td>300-500m</td></tr>
+<tr><td>Classification</td><td>50-150m</td><td>100-200m</td></tr>
+<tr><td>Direction-finding</td><td>50-200m</td><td>100-250m</td></tr>
+<tr><td>Alert latency</td><td colspan="2">&lt;2 seconds</td></tr>
+<tr><td>Battery runtime (768Wh)</td><td colspan="2">~23 hours without solar</td></tr>
+</table>
+
+<h3>System Power Budget: ~33-37W</h3>
+
+<h3>$10K Budget Allocation</h3>
+<table>
+<tr><td>3x Detection Nodes</td><td>$6,990</td></tr>
+<tr><td>Central server / laptop</td><td>$1,000</td></tr>
+<tr><td>Software / cloud</td><td>$500</td></tr>
+<tr><td>Spare parts</td><td>$500</td></tr>
+<tr><td>Test equipment rental</td><td>$500</td></tr>
+<tr><td>Contingency</td><td>$510</td></tr>
+<tr><th>Total</th><th>$10,000</th></tr>
+</table>
+</div>
+</details>
+
+<details>
+<summary>Why Acoustic Detection Is the Wedge</summary>
+<div class="detail-content">
+<h3>The Fiber-Optic Drone Problem</h3>
+<p>Fiber-optic FPV drones use a thin cable (0.1-0.3mm) for video/control. This <strong>completely eliminates the RF command link</strong>. Russia has deployed these at scale since spring 2024. NATO issued an urgent Innovation Challenge in April 2025 specifically for this problem.</p>
+<p><strong>What breaks:</strong> RF detection, RF jamming, RF direction-finding &mdash; the majority of the C-UAS market.</p>
+<p><strong>What still works:</strong> Acoustic detection (motors still make sound &mdash; often <em>louder</em> due to cable weight), thermal/visual, radar (if RCS sufficient).</p>
+
+<h3>Acoustic vs. Other Modalities</h3>
+<table>
+<tr><th></th><th>Acoustic</th><th>RF</th><th>Radar</th><th>EO/IR</th></tr>
+<tr><td>Range</td><td>100-500m</td><td>1-5km</td><td>5-30km</td><td>500m-2km</td></tr>
+<tr><td>Fiber-optic drones</td><td style="color:var(--green)">YES</td><td style="color:var(--red)">NO</td><td style="color:var(--green)">YES</td><td style="color:var(--green)">YES</td></tr>
+<tr><td>Autonomous drones</td><td style="color:var(--green)">YES</td><td style="color:var(--red)">NO</td><td style="color:var(--green)">YES</td><td style="color:var(--green)">YES</td></tr>
+<tr><td>Passive</td><td style="color:var(--green)">YES</td><td style="color:var(--green)">YES</td><td style="color:var(--red)">NO</td><td style="color:var(--green)">YES</td></tr>
+<tr><td>Cost/sensor</td><td style="color:var(--green)">$400-5K</td><td>$5K-50K</td><td>$100K-10M+</td><td>$10K-100K</td></tr>
+<tr><td>Night</td><td style="color:var(--green)">YES</td><td style="color:var(--green)">YES</td><td style="color:var(--green)">YES</td><td>IR only</td></tr>
+<tr><td>Licensing</td><td style="color:var(--green)">None</td><td>Possible</td><td>Usually</td><td style="color:var(--green)">None</td></tr>
+</table>
+
+<h3>Ukraine Proved It</h3>
+<ul>
+<li>14,000+ acoustic sensors deployed, covering ~5% of territory</li>
+<li>ZVOOK system: ~$500/station, 1.6% false positive rate</li>
+<li>Detections appear in Delta C2 within 12 seconds</li>
+<li>95% interception support rate</li>
+<li>US military has expressed interest in testing the network</li>
+</ul>
+
+<h3>Acoustic Drone Signatures</h3>
+<p>Drone propellers produce a "harmonic stack" &mdash; fundamental blade passing frequency (BPF) plus integer multiples. Multi-rotors also exhibit rotor-rotor interaction tones (beat frequencies from mismatched RPM) that strongly discriminate from birds/aircraft.</p>
+<table>
+<tr><th>Drone</th><th>BPF</th><th>Key Energy</th></tr>
+<tr><td>DJI Mavic</td><td>150-200 Hz</td><td>100 Hz - 8 kHz</td></tr>
+<tr><td>FPV racing</td><td>267-1500 Hz</td><td>200 Hz - 16 kHz</td></tr>
+<tr><td>Fixed-wing</td><td>167-333 Hz</td><td>100 Hz - 4 kHz</td></tr>
+</table>
+</div>
+</details>
+
+<details>
+<summary>Battlefield Context: What We've Learned</summary>
+<div class="detail-content">
+<h3>Ukraine (2024-2026)</h3>
+<ul>
+<li>200,000 drones/month delivered to Ukrainian troops</li>
+<li>500+ domestic drone manufacturers</li>
+<li>First all-robot assault force won engagement in Kharkiv (Dec 2024)</li>
+<li>Fiber-optic drones defeated all EW/jamming (spring 2024 onward)</li>
+<li>Acoustic sensor networks became primary detection for RF-silent threats</li>
+<li>Low-cost interceptor drones ($1,000-2,500) replacing $3M missiles</li>
+</ul>
+
+<h3>US-Mexico Border</h3>
+<ul>
+<li><strong>34,682 drone flights</strong> detected within 500m of border in FY2025</li>
+<li>CJNG has dedicated "Drone Operators" unit &mdash; 42 attacks, 21 deaths</li>
+<li>FPV drones adopted from Ukrainian tactics (Sinaloa by Sept 2025)</li>
+<li>Cartel operatives may have infiltrated Ukraine's International Legion for training</li>
+<li>US military accidentally shot down a CBP drone (Feb 2026) &mdash; coordination failures</li>
+<li>CSIS: "US Needs a Southwest Drone Wall"</li>
+</ul>
+
+<h3>Key Lessons</h3>
+<ol>
+<li>Cheap drones changed everything &mdash; treated like ammunition</li>
+<li>Counter-drone is the urgent unsolved problem</li>
+<li>EW/jamming is necessary but insufficient (fiber-optic immune)</li>
+<li>Edge AI and offline operation are essential (networks get denied)</li>
+<li>Multi-layered defense-in-depth is the only approach that works</li>
+<li>The side that adapts fastest wins</li>
+</ol>
+</div>
+</details>
+
+<details>
+<summary>Go-to-Market Strategy</summary>
+<div class="detail-content">
+<h3>Phase 1: Prototype &amp; Validate (Months 1-6, $10K)</h3>
+<table>
+<tr><td><span class="tag tag-now">Now</span></td><td>Incorporate Delaware C-Corp, get EIN</td></tr>
+<tr><td><span class="tag tag-now">Now</span></td><td>SAM.gov registration (UEI, CAGE code)</td></tr>
+<tr><td><span class="tag tag-now">Now</span></td><td>Join NSTXL + SOSSEC consortia ($750)</td></tr>
+<tr><td><span class="tag tag-soon">Wk 4-12</span></td><td>Build 3 prototype nodes</td></tr>
+<tr><td><span class="tag tag-soon">Month 2</span></td><td>Submit DIU solution brief (C-UAS sensing CSO)</td></tr>
+<tr><td><span class="tag tag-soon">When open</span></td><td>Enter xTechCounter Strike</td></tr>
+</table>
+
+<h3>Phase 2: First Revenue (Months 6-18)</h3>
+<ul>
+<li>Win DIU prototype OTA ($100K-500K) or xTech prize ($50-350K)</li>
+<li>Respond to DHS $1.5B C-UAS IDIQ</li>
+<li>Sell to FEMA-funded state/local agencies ($5K-15K/unit)</li>
+<li>Direct sales to correctional facilities</li>
+</ul>
+
+<h3>Phase 3: Scale (Months 18-36)</h3>
+<ul>
+<li>SBIR Phase II ($500K-1.5M)</li>
+<li>AFWERX STRATFI ($3M-15M)</li>
+<li>MIL-STD testing and certification</li>
+<li>Production manufacturing</li>
+<li>APFIT nomination ($10M-50M)</li>
+</ul>
+
+<h3>Pricing</h3>
+<table>
+<tr><th>Tier</th><th>What</th><th>Price</th><th>Margin</th></tr>
+<tr><td>Single node</td><td>Detection + classification + bearing</td><td>$12,000</td><td>~80%</td></tr>
+<tr><td>3-node kit</td><td>Triangulation + area coverage</td><td>$30,000</td><td>~75%</td></tr>
+<tr><td>Software sub</td><td>Updates, signatures, dashboard</td><td>$200/node/mo</td><td>~95%</td></tr>
+<tr><td>Enterprise</td><td>Custom C2, training</td><td>Negotiated</td><td>~60%</td></tr>
+</table>
+</div>
+</details>
+
+<details>
+<summary>DoD Procurement Pathways</summary>
+<div class="detail-content">
+<h3>Best Entry Points (No Prior Contracts Needed)</h3>
+
+<p><strong>Other Transaction Authority (OTA)</strong> &mdash; Best path for non-traditional companies. Exempt from most FAR requirements. Join NSTXL ($250-10K) and SOSSEC ($500). Submit 5-10 page white papers, awards in 60-90 days.</p>
+
+<p><strong>DIU Commercial Solutions Opening</strong> &mdash; Submit short solution brief at diu.mil. Counter-drone sensing CSO is active NOW (Feb 2026). 51% of prototypes transition to production.</p>
+
+<p><strong>Army xTech</strong> &mdash; Prize competitions, no prior contracts needed. xTechCounter Strike: up to $350K + G-TEAD Marketplace access.</p>
+
+<p><strong>Direct Purchase Card</strong> &mdash; If unit cost &lt;$15K, any DoD unit commander can buy with minimal paperwork. This is why we price at $12K.</p>
+
+<h3>Key Thresholds (Oct 2025)</h3>
+<table>
+<tr><td>Micro-Purchase</td><td><strong>$15,000</strong></td><td>Purchase card, no bidding</td></tr>
+<tr><td>Simplified Acquisition</td><td><strong>$350,000</strong></td><td>Small business set-aside</td></tr>
+</table>
+
+<h3>Active Funding</h3>
+<table>
+<tr><td>DHS C-UAS IDIQ</td><td>$1.5B</td><td>Solicitation phase</td></tr>
+<tr><td>FEMA C-UAS Grants</td><td>$500M</td><td>FY26-27</td></tr>
+<tr><td>DHS Counter-Drone Office</td><td>$115M</td><td>Jan 2026</td></tr>
+<tr><td>DIU C-UAS Sensing</td><td>Active CSO</td><td>Feb 2026</td></tr>
+</table>
+
+<h3>SBIR Status</h3>
+<p><span class="stat stat-red">Expired Sept 30, 2025</span> Reauthorization pending in Congress. Don't wait for it &mdash; use OTA/DIU/xTech.</p>
+
+<h3>Registration Checklist</h3>
+<ul class="checklist">
+<li>Incorporate Delaware C-Corp (~$1,000)</li>
+<li>Get EIN from IRS (free, same day)</li>
+<li>SAM.gov registration (free, 7-21 days)</li>
+<li>UEI + CAGE code (automatic with SAM)</li>
+<li>Join NSTXL consortium (~$250-10K)</li>
+<li>Join SOSSEC consortium ($500)</li>
+<li>Basic CGL insurance (~$1,500/yr)</li>
+</ul>
+</div>
+</details>
+
+<details>
+<summary>Startup Formation &amp; Compliance</summary>
+<div class="detail-content">
+<h3>Entity: Delaware C-Corp</h3>
+<p>VCs require it. Stripe Atlas or Clerky ($500-800). Registered agent ($100-300/yr). Total under $1,500.</p>
+
+<h3>ITAR/EAR</h3>
+<p><strong>Detection-only = likely EAR (Commerce).</strong> Much lighter than ITAR. Passive RF scanning, acoustic, optical &mdash; reasonable argument for EAR99 jurisdiction. If you add jamming/defeat capabilities, that's ITAR (State Dept). Stay detection-only initially.</p>
+
+<h3>CMMC</h3>
+<p>Level 1 (self-assessment): ~$3-5K. Level 2 (third-party, for CUI): $50K-200K first year. You don't need it before your first contract. Build compliant habits from day one.</p>
+
+<h3>Security Clearance</h3>
+<p>Not needed initially. Counter-drone detection at unclassified level doesn't require clearance. Pursue FCL later when a specific program demands it.</p>
+
+<h3>Key Standards (Later, Not Now)</h3>
+<ul>
+<li>MIL-STD-810H (ruggedization): Self-declared after testing. $10-50K.</li>
+<li>MIL-STD-461G (EMI/EMC): Critical for RF devices. $15-40K.</li>
+<li>Many prototype contracts accept commercial-grade hardware.</li>
+</ul>
+
+<h3>The Valley of Death &mdash; How to Survive</h3>
+<ol>
+<li><strong>Dual-use from day one</strong> &mdash; prisons, airports, events = non-DoD revenue</li>
+<li><strong>DIU pathway</strong> &mdash; 51% of prototypes transition to production</li>
+<li><strong>Stay lean</strong> &mdash; don't staff up before production revenue</li>
+<li><strong>Multiple contract vehicles</strong> &mdash; don't depend on one program</li>
+<li><strong>Find your champion</strong> &mdash; operational end-users, not just acquisition</li>
+</ol>
+
+<h3>Timeline to First Revenue</h3>
+<table>
+<tr><td>Incorporation</td><td>Week 1</td></tr>
+<tr><td>SAM.gov</td><td>Weeks 2-5</td></tr>
+<tr><td>First proposal</td><td>Months 1-4</td></tr>
+<tr><td>DIU OTA (if won)</td><td>Months 4-8</td></tr>
+<tr><td><strong>First revenue</strong></td><td><strong>Months 8-14</strong></td></tr>
+</table>
+</div>
+</details>
+
+<details>
+<summary>Open Source &amp; Datasets</summary>
+<div class="detail-content">
+<h3>Code Repositories</h3>
+<table>
+<tr><th>Repo</th><th>What</th></tr>
+<tr><td><a href="https://github.com/sdeva14/eusipco17-drone-sound-detection">eusipco17-drone-sound-detection</a></td><td>RNN/CNN/GMM drone audio detection</td></tr>
+<tr><td><a href="https://github.com/kbhujbal/SudarshanChakra-acoustic_uav_threat_detection_CNN">acoustic_uav_threat_detection_CNN</a></td><td>Production-grade CNN pipeline</td></tr>
+<tr><td><a href="https://github.com/Adnan0032/Drone-Sound-Detection-with-TinyML-on-Raspberry-Pi-4">Drone-Sound-Detection-TinyML</a></td><td>TinyML on Raspberry Pi</td></tr>
+<tr><td><a href="https://github.com/tesorrells/RF-Drone-Detection">RF-Drone-Detection</a></td><td>Passive RF detection via HackRF</td></tr>
+<tr><td><a href="https://github.com/ZhaoJ9014/Anti-UAV">Anti-UAV</a></td><td>RGB + thermal video detection</td></tr>
+<tr><td><a href="https://github.com/Al-Sad/DroneRF">DroneRF</a></td><td>RF signature detection/ID</td></tr>
+</table>
+
+<h3>Datasets</h3>
+<table>
+<tr><th>Dataset</th><th>Size</th></tr>
+<tr><td><a href="https://huggingface.co/datasets/ahlab-drone-project/DroneAudioSet/">DroneAudioset</a></td><td>23.5 hours, MIT license</td></tr>
+<tr><td><a href="https://arxiv.org/abs/2509.04715">Multiclass Acoustic (2025)</a></td><td>32 UAV classes</td></tr>
+<tr><td><a href="https://github.com/saraalemadi/DroneAudioDataset">Al-Emadi DroneAudioDataset</a></td><td>1300+ clips</td></tr>
+</table>
+
+<p><strong>Gap:</strong> Almost no public datasets of fiber-optic FPV drone audio. Building an operational dataset is a competitive moat.</p>
+</div>
+</details>
+
+<details>
+<summary>Risk Assessment</summary>
+<div class="detail-content">
+<table>
+<tr><th>Risk</th><th></th><th>Mitigation</th></tr>
+<tr><td>Acoustic range insufficient in noise</td><td><span class="stat stat-red">High</span></td><td>Dense mesh (more nodes). Multi-modal fusion.</td></tr>
+<tr><td>Established player copies</td><td><span class="stat stat-orange">Med</span></td><td>Speed to market. Operational dataset moat. SAFER SKIES approved list.</td></tr>
+<tr><td>False positive rate too high</td><td><span class="stat stat-red">High</span></td><td>Acoustic trigger + visual/thermal confirm. ML improvement with operational data.</td></tr>
+<tr><td>Solo founder, no HW background</td><td><span class="stat stat-red">High</span></td><td>Open-source repos. Contract PCB. Focus on integration + compliance.</td></tr>
+<tr><td>SBIR never reauthorized</td><td><span class="stat stat-orange">Med</span></td><td>OTA/DIU don't depend on SBIR. Direct commercial sales.</td></tr>
+</table>
+</div>
+</details>
+
+<details>
+<summary>First Week Checklist</summary>
+<div class="detail-content">
+<ul class="checklist">
+<li>Incorporate Delaware C-Corp (Stripe Atlas or Clerky)</li>
+<li>Get EIN from IRS (same day, online)</li>
+<li>Open business bank account</li>
+<li>Begin SAM.gov registration</li>
+<li>Order Jetson Orin Nano Super Dev Kit ($249)</li>
+<li>Order miniDSP UMA-16 v2 ($275)</li>
+<li>Download drone audio detection repo and run it</li>
+<li>Buy a $50 toy drone for recording audio samples</li>
+<li>Start collecting your own drone audio dataset</li>
+</ul>
+</div>
+</details>
+
+<hr>
+<p style="color:var(--muted); font-size:0.8em; text-align:center; margin-top:24px;">
+FORGE &mdash; Research compiled March 17, 2026<br>
+Full research documents: 7 deep-dive reports in /research/<br>
+Built with Claude Code
+</p>
+
+</body>
+</html>
