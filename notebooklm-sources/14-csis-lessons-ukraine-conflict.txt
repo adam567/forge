@@ -1,0 +1,47 @@
+SOURCE: Center for Strategic and International Studies (CSIS)
+TITLE: Lessons from the Ukraine Conflict: Modern Warfare in the Age of Autonomy, Information, and Resilience
+AUTHOR: Colonel Matthew N. Slusher
+DATE: May 2, 2025
+URL: https://www.csis.org/analysis/lessons-ukraine-conflict-modern-warfare-age-autonomy-information-and-resilience
+
+---
+
+AUTONOMOUS SYSTEMS & FORCE ARCHITECTURE
+
+Unmanned systems fundamentally alter battlefield dynamics by extending operational reach while minimizing personnel exposure. The proliferation of affordable drones has dramatically lowered barriers to air operations: "conduct most if not all of the airpower roles for the price of a drone, a laptop, and some imagination."
+
+Commercial supply chains now provide essential components — batteries, computing systems, airframe materials — accessible through standard e-commerce platforms.
+
+Ukrainian drones have destroyed over 65 percent of destroyed Russian tanks, demonstrating significant economic disruption. Low-cost attritable systems achieve outsized effects when deployed at scale.
+
+The conflict revealed a four-tier military asset taxonomy:
+- Expendable assets (single-use ammunition)
+- Attritable assets (low-cost, replaceable systems)
+- Risk-tolerant assets (medium-tier unmanned systems)
+- Survivable assets (high-value platforms requiring protection)
+
+Drones serve multiple functions: reconnaissance, targeting, strike operations, electronic warfare platforms, communications relays, and logistics support.
+
+Drone operators became high-value targets. Both sides developed countermeasures including mesh networks, satellite communications integration, airborne relays, and local autonomy capabilities.
+
+ELECTRONIC WARFARE & SPECTRUM SUPERIORITY
+
+After three decades of Western electromagnetic dominance in Iraq and Afghanistan, Ukraine revealed a genuinely contested electromagnetic landscape where neither side achieved clear advantage.
+
+GPS jamming disrupted navigation for autonomous systems and precision-guided munitions. Communications disruption degraded command and control. Tactical jamming targeted UAV operations. Frequency agility created temporary operational windows.
+
+Emerging requirements: modern agile software-defined systems; integrated military-government-commercial domain architectures; AI integration enabling cognitive electronic warfare at machine speed.
+
+AIR DEFENSE EVOLUTION
+
+Modern air defense confronts diverse threats from low-cost one-way attack drones to high-end hypersonic missiles.
+
+Ukraine implemented extensive acoustic sensor networks creating comprehensive air pictures; diversified beyond traditional radar systems; and integrated multiple sensing modalities for resilient detection networks.
+
+The concept of air superiority now encompasses electromagnetic spectrum control, integrated kinetic and non-kinetic effects, and autonomous system employment.
+
+CONTESTED LOGISTICS
+
+Western militaries systematically reduced organic logistics capabilities over 30-40 years. The emerging approach emphasizes "disaggregate to survive, reaggregate when necessary" with distributed supply nodes, rapid concentration capability, and additive manufacturing reducing supply chain dependency.
+
+KEY CONCLUSION: Military effectiveness increasingly depends on continuous testing, experimentation, and validation rather than seeking perfect end states. "Better never stops."

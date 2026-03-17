@@ -1,0 +1,32 @@
+SOURCE: Center for Strategic and International Studies (CSIS)
+TITLE: The United States Needs a Southwest Drone Wall
+AUTHOR: Henry Ziemer, Associate Fellow, Americas Program
+DATE: December 16, 2025
+URL: https://www.csis.org/analysis/united-states-needs-southwest-drone-wall
+
+---
+
+The article highlights that approximately 1,000 drone incursions occur monthly across the U.S.-Mexico border. Border patrol agents report being "watched every day" by unidentified drones hovering just across the Rio Grande.
+
+Criminal organizations employ unmanned aerial systems to track border patrol movements, monitor U.S. military forces, deliver narcotics and contraband, and scout new smuggling routes. A recent explosive-armed drone attack on a Mexican police station in Tijuana demonstrates the escalating threat.
+
+Cartels are experimenting with fiber-optic controlled drones — technology "resilient to jamming and other electronic warfare attacks." They're also testing larger platforms like the DJI FlyCart 30, capable of transporting payloads exceeding 80 pounds.
+
+RECOMMENDED SOLUTIONS:
+
+The article advocates for "distributed, passive networks of acoustic, electro-optical, and infrared sensors" rather than traditional advanced radar systems. This approach offers greater coverage across 3,100+ kilometers of border, increased resilience through redundancy, and better detection of low-and-slow flying drones.
+
+The Department of Defense should designate borderland military bases as test zones for emerging counter-UAS technologies. The 10th Mountain Division currently uses AN/TPQ-53 and AN/MPQ-64 radars for detection, while new jamming systems provide soft-kill options.
+
+Joint Task Force-Southern Border should serve as backbone. Partnership between FAA, CBP, and local law enforcement. JIATF 401 to contribute counter-UAS expertise.
+
+CRITICAL CHALLENGES:
+- Achieving persistent surveillance across thousands of kilometers
+- Managing false positives to prevent accidentally jamming commercial aircraft
+- Cost disparity — countermeasures often exceed drone expenses
+- Cross-border operational constraints
+- Rapid discovery and exploitation of coverage gaps
+- Constant evolution of cartel tactics
+
+STRATEGIC IMPORTANCE:
+Border drone defense serves as a crucial testbed for future high-intensity conflicts. The technological and interagency solutions developed here will prove essential for broader homeland defense priorities.
